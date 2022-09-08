@@ -1,0 +1,82 @@
+* {
+  padding: 0px;
+  border: 0px;
+  border-radius: 0px;
+  margin: 0px;
+  outline: 0px;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+}
+
+strong,
+em,
+dfn,
+small,
+address {
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+   --color-m0: #29D40E;
+   --color-m1: #66E54D;
+   --color-e0: #2473D4;
+   --color-e1: #65A0D7;
+   --color-s0: #26541F;
+   --color-d0: #D43E0E;
+   --color-d1: #E17B56;
+   --color-b0: #051A00;
+   --color-b1: #B0BEAC;
+   --color-w0: #EDF0EC;
+   --color-w-1: #D2D3D2;
+}
+
+body {
+   font-family: 'Inter', sans-serif;
+   font-weight: 500;
+   color: var(--color-b0);
+}
