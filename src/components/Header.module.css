@@ -1,0 +1,13 @@
+.headerBg {
+  background-color: var(--color-m0);
+}
+
+.header {
+  max-width: 885px;
+  padding: 30px 15px;
+  margin: 0px auto;
+}
+
+.headerLogo {
+  max-width: 250px;
+}
