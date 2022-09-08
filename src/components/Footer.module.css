@@ -1,0 +1,29 @@
+.footerBg {
+  background-color: var(--color-m0);
+}
+
+.footer {
+  max-width: 885px;
+  padding: 30px 15px;
+  margin: 0px auto;
+}
+
+.footerP {
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--color-w0) !important;
+}
+
+.footerP a {
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.footerP a:hover {
+  scale: 1.05;
+  text-decoration: underline;
+}
+
+.footerP:not(:last-of-type) {
+  margin-bottom: 15px;
+}
