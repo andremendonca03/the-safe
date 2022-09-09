@@ -1,0 +1,20 @@
+.main {
+  max-width: 885px;
+  background-color: var(--color-w0);
+  padding: 30px 50px;
+  border-radius: 10px;
+  margin: 0px auto 30px auto;
+}
+
+.topComponents {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 50px;
+}
+
+.bottomComponents {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
