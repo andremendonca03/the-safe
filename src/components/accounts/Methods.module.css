@@ -1,0 +1,36 @@
+.methods {
+  max-width: 150px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-b0);
+}
+
+.methods div {
+  display: flex;
+  padding: 10px 0px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.methods div:hover {
+  scale: 1.05;
+}
+
+.methods div[data-active="true"] {
+  color: var(--color-e0);
+}
+
+.methods div[data-active="true"] img {
+  filter: invert(40%) sepia(53%) saturate(3415%) hue-rotate(199deg)
+    brightness(87%) contrast(89%);
+}
+
+.methods div:not(:last-of-type) {
+  border-bottom: 1px solid var(--color-w-1);
+}
+
+.methods img {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+}
