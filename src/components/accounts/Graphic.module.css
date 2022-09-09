@@ -1,0 +1,65 @@
+.title {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-b0);
+  margin-bottom: 15px;
+}
+
+.bars {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 150px;
+  margin-bottom: 15px;
+}
+
+.greenBar {
+  width: 50px;
+  height: 0px;
+  background-color: var(--color-m0);
+  margin-right: 5px;
+  transition: .5s;
+}
+
+.redBar {
+  width: 50px;
+  height: 0px;
+  background-color: var(--color-d0);
+  transition: .5s;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 1.4rem;
+}
+
+.data div span {
+  display: inline-block;
+  min-width: 75px;
+  font-weight: 700;
+  text-align: center;
+  padding: 5px;
+}
+
+.dataEarnings span {
+  color: var(--color-m0);
+}
+.dataExpenses span {
+  color: var(--color-d0);
+}
+.dataTotal span {
+  color: var(--color-e0);
+}
+
+.data div:not(:last-of-type) span {
+  border-right: 2px solid var(--color-w-1);
+}
+
+.data div p {
+  text-align: center;
+  color: var(--color-b1);
+}
