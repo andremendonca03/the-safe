@@ -1,0 +1,28 @@
+.balance {
+  max-width: fit-content;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--color-w-1);
+}
+
+.balance p {
+  font-size: 1.6rem;
+  color: var(--color-b0);
+}
+
+.value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value span {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-m0);
+}
+
+.value img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
