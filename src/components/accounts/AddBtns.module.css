@@ -1,0 +1,33 @@
+.addBtns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.addBtns div {
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 8px 15px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 0 transparent;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.expensesBtn {
+  color: var(--color-d0);
+  border: 2px solid var(--color-d0);
+  margin-right: 30px;
+}
+
+.earningsBtn {
+  color: var(--color-m0);
+  border: 2px solid var(--color-m0);
+}
+
+.expensesBtn:hover {
+  color: var(--color-w0);
+}
+.earningsBtn:hover {
+  color: var(--color-w0);
+}
