@@ -6,11 +6,11 @@ const Graphic = () => {
   const global = React.useContext(GlobalContext);
 
   function barsStyle(type) {
-    const earningsValue = global.numbers.earnings(global.method);
-    const expensesValue = global.numbers.expenses(global.method);
+    const earningsValue = Number(global.numbers.earnings(global.method).replace(",", ""));
+    const expensesValue = Number(global.numbers.expenses(global.method).replace(",", ""));
     const isEarningsBigger = earningsValue > expensesValue;
 
-    if (+earningsValue + +expensesValue === 0) {
+    if (earningsValue + expensesValue === 0) {
       return { height: "150px", backgroundColor: "var(--color-b1)" };
     } else if (
       (isEarningsBigger && type === "earnings") ||
