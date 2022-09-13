@@ -1,36 +1,42 @@
 import React from "react";
+import logoHouse from "./icons/categories/house.svg";
+import logoHealth from "./icons/categories/health.svg";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const example = [
+  const categories = [
     {
-      id: 0,
-      type: "expense",
-      name: "House Gardening",
-      category: "house",
-      method: "card",
-      value: 200.0,
+      name: "House",
+      logo: logoHouse,
+      value: "house",
     },
     {
-      id: 1,
-      type: "earning",
-      name: "Salary 1",
-      category: "salary",
-      method: "cash",
-      value: 400.0,
-    },
+      name: "Health",
+      logo: logoHealth,
+      value: "health",
+    }
   ];
 
   const [page, setPage] = React.useState("account");
   const [balanceHidden, setBalanceHidden] = React.useState(false);
+  const [count, setCount] = React.useState(0);
 
   const [method, setMethod] = React.useState("all");
+  const [modal, setModal] = React.useState({ active: false, type: "" });
+  const [newTransaction, setNewTransaction] = React.useState({
+    id: 0,
+    type: "",
+    name: "",
+    category: "",
+    method: "",
+    value: 0,
+  });
 
-  const [transactions, setTransactions] = React.useState(example);
+  const [transactions, setTransactions] = React.useState([]);
 
-  const [numbers, setNumbers] = React.useState({
+  const numbers = {
     earnings: (method) => {
       if (method === "all") {
         return format(
@@ -83,16 +89,22 @@ export const GlobalStorage = ({ children }) => {
     },
     total: (method) => {
       if (method === "all") {
-        return format(numbers.earnings("all") - numbers.expenses("all"));
+        const unformattedEarnings = Number(numbers.earnings("all").replace(",", ""));
+        const unformattedExpenses = Number(numbers.expenses("all").replace(",", ""));
+
+        return format(unformattedEarnings - unformattedExpenses);
       } else {
-        return format(numbers.earnings(method) - numbers.expenses(method));
+        const unformattedEarnings = Number(numbers.earnings(method).replace(",", ""));
+        const unformattedExpenses = Number(numbers.expenses(method).replace(",", ""));
+
+        return format(unformattedEarnings - unformattedExpenses);
       }
     },
-  });
+  };
 
   function format(n) {
     const negative = n < 0;
-    const stringed = n.toFixed(2).toString().replace(".", "").replace("-", "");
+    const stringed = n.toFixed(2).toString().replace(".", "").replace(",", "").replace("-", "");
     const cents = stringed.slice(-2);
     const full = stringed.replace(cents, "").split("");
     let count = 0;
@@ -108,6 +120,37 @@ export const GlobalStorage = ({ children }) => {
     return `${negative ? "-" : ""}${final}.${cents}`;
   }
 
+  const [database, setDatabase] = useLocalStorage(
+    "database",
+    `
+    {
+      "balanceHidden": ${balanceHidden},
+      "count": ${count},
+      "transactions": ${JSON.stringify(transactions)}
+    }
+  `
+  );
+
+  const databaseObject = JSON.parse(database);
+  console.log(JSON.parse(database));
+  React.useEffect(() => {
+    setBalanceHidden(databaseObject.balanceHidden);
+    setCount(databaseObject.count);
+    setTransactions(databaseObject.transactions);
+  }, []);
+
+  React.useEffect(() => {
+    setDatabase(
+      `
+        {
+          "balanceHidden": ${balanceHidden},
+          "count": ${count},
+          "transactions": ${JSON.stringify(transactions)}
+        }
+      `
+    )
+  }, [balanceHidden, count, transactions, setDatabase]);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -116,12 +159,19 @@ export const GlobalStorage = ({ children }) => {
         setPage,
         balanceHidden,
         setBalanceHidden,
+        count,
+        setCount,
         method,
         setMethod,
+        modal,
+        setModal,
+        newTransaction,
+        setNewTransaction,
         transactions,
         setTransactions,
         numbers,
-        setNumbers,
+        categories,
+        format,
       }}
     >
       {children}
