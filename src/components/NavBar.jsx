@@ -29,8 +29,8 @@ const NavBar = () => {
       <button id="account" onClick={handleClick}>
         Account
       </button>
-      <button id="analytics" onClick={handleClick}>
-        Analytics
+      <button id="categories" onClick={handleClick}>
+        Categories
       </button>
     </nav>
   );
