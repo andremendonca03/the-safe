@@ -10,7 +10,7 @@
   padding: 8px 15px;
   border-radius: 5px;
   box-shadow: inset 0 0 0 0 transparent;
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease;
   cursor: pointer;
 }
 
