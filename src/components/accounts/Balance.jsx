@@ -15,7 +15,11 @@ const Balance = () => {
     <section className={styles.balance}>
       <p>Overall Balance:</p>
       <div className={styles.value}>
-        <span>$ {global.balanceHidden ? "— — —" : global.numbers.total("all")}</span>
+        <span
+          style={{ color: global.numbers.total("all") < 0 ? "var(--color-d0)" : "var(--color-m0)" }}
+        >
+          $ {global.balanceHidden ? "— — —" : global.numbers.total("all")}
+        </span>
         <img
           src={global.balanceHidden ? eyeIcon : eyeOffIcon}
           alt="Eye Icon"
