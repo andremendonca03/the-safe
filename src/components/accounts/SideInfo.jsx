@@ -8,6 +8,13 @@ const SideInfo = () => {
   const isThereExpense = global.transactions.filter(
     (item) => item.type === "expense"
   );
+  const isThereMultipleExpenses = isThereExpense.reduce((acc, item) => {
+    if (isThereExpense.length > 1) {
+      return [ ...acc, (isThereExpense[0].category !== item.category)]
+    } else {
+      return false;
+    }
+  }, []).includes(true);
 
   /* CSS BTN HOVER EFFECT */
   function handleMouseEnter({ target }) {
@@ -17,7 +24,7 @@ const SideInfo = () => {
   function handleMouseLeave({ target }) {
     target.style.boxShadow = `inset 0 0 0 0 var(--color-e1)`;
   }
-  
+
   function handleClick() {
     global.setPage("categories");
   }
@@ -39,19 +46,36 @@ const SideInfo = () => {
             <p>{global.numbers.mostSpendingCategory().category}</p>
           </div>
           <p>
-            <span>$ {global.numbers.mostSpendingCategory().total}</span> in{" "}
-            {global.numbers.mostSpendingCategory().expenses} expenses
+            <span>
+              ${" "}
+              {global.balanceHidden
+                ? "— — —"
+                : global.numbers.mostSpendingCategory().total}
+            </span>{" "}
+            in {global.numbers.mostSpendingCategory().expenses} expenses
           </p>
-          {isThereExpense.length > 1 && (
+          {isThereMultipleExpenses && (
             <div className={styles.mostSpendingCategory}>
               <img src={arrow} alt="" />{" "}
               <p>
-                <span>{global.numbers.mostSpendingCategory().difference}%</span>{" "}
+                <span>
+                  {global.balanceHidden
+                    ? "— — —"
+                    : global.numbers.mostSpendingCategory().difference}
+                  %
+                </span>{" "}
                 above the 2nd
               </p>
             </div>
           )}
-          <button className={styles.categoriesBtn} onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Manage categories</button>
+          <button
+            className={styles.categoriesBtn}
+            onClick={handleClick}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            Manage categories
+          </button>
         </div>
       ) : (
         <></>
