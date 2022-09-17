@@ -22,7 +22,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const [page, setPage] = React.useState("account");
+  const [page, setPage] = React.useState("transactions");
   const [balanceHidden, setBalanceHidden] = React.useState(false);
   const [count, setCount] = React.useState(17);
 
@@ -33,11 +33,23 @@ export const GlobalStorage = ({ children }) => {
     type: "",
     name: "",
     category: "",
+    logo: "",
+    color: "",
     method: "",
     value: 0,
   });
 
   const [transactions, setTransactions] = React.useState([]);
+
+  const transactionsShow = transactions.reduce((acc, item) => {
+    if (method === "all") {
+      return [...acc, item];
+    } else if (method === item.method) {
+      return [...acc, item];
+    } else {
+      return acc;
+    }
+  }, []);
 
   const categories = [
     [
@@ -306,8 +318,6 @@ export const GlobalStorage = ({ children }) => {
             { total: 0 }
           );
 
-        console.log(ndMostSpendingCategory);
-
         const returnObject = {
           category: msCategory.category,
           total: format(msCategory.total),
@@ -400,8 +410,10 @@ export const GlobalStorage = ({ children }) => {
         setNewTransaction,
         transactions,
         setTransactions,
+        transactionsShow,
         categories,
         numbers,
+        format,
       }}
     >
       {children}
