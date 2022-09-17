@@ -5,20 +5,6 @@ import { GlobalContext } from "../../GlobalContext";
 const Modal = () => {
   const global = React.useContext(GlobalContext);
 
-  /*document.addEventListener("click", (e) => {
-    console.log(e.target.closest(`.${styles.modal}`));
-    const modalBox = document.querySelector(`.${styles.modal}`);
-    if (e.target.closest(`.${styles.modal}`) === null) {
-      console.log("E null");
-
-    } else if (e.target.closest(`.${styles.modal}`) === modalBox) {
-      console.log("E dentro");
-    } else {
-      console.log("fecha");
-      
-    }
-  });*/
-
   const modalType = React.useRef();
   const submitBtn = React.useRef();
   React.useEffect(() => {
@@ -35,6 +21,22 @@ const Modal = () => {
       global.setNewTransaction((prev) => {
         return { ...prev, value: Number(target.value) };
       });
+    } else if (target.id === "category") {
+      
+
+      global.setNewTransaction((prev) => {
+        const earningOrExpense = global.modal.type === "earning" ? 1 : 0;
+        return {
+          ...prev,
+          category: target.value,
+          logo: global.categories[earningOrExpense].find(
+            (item) => item.value === target.value
+          ).logo,
+          color: global.categories[earningOrExpense].find(
+            (item) => item.value === target.value
+          ).color,
+        };
+      });
     } else {
       global.setNewTransaction((prev) => {
         return {
@@ -50,7 +52,7 @@ const Modal = () => {
     e.preventDefault();
 
     if (global.newTransaction.value > 0) {
-      global.setTransactions((prev) => [...prev, global.newTransaction]);
+      global.setTransactions((prev) => [global.newTransaction, ...prev]);
     }
 
     global.setCount((prev) => prev + 1);
