@@ -22,12 +22,13 @@ import useLocalStorage from "./hooks/useLocalStorage";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const [page, setPage] = React.useState("transactions");
+  const [page, setPage] = React.useState("account");
   const [balanceHidden, setBalanceHidden] = React.useState(false);
-  const [count, setCount] = React.useState(17);
+  const [count, setCount] = React.useState(0);
 
   const [method, setMethod] = React.useState("all");
   const [modal, setModal] = React.useState({ active: false, type: "" });
+
   const [newTransaction, setNewTransaction] = React.useState({
     id: 0,
     type: "",
@@ -38,9 +39,7 @@ export const GlobalStorage = ({ children }) => {
     method: "",
     value: 0,
   });
-
   const [transactions, setTransactions] = React.useState([]);
-
   const transactionsShow = transactions.reduce((acc, item) => {
     if (method === "all") {
       return [...acc, item];
@@ -266,7 +265,7 @@ export const GlobalStorage = ({ children }) => {
         return format(unformattedEarnings - unformattedExpenses);
       }
     },
-    mostSpendingCategory: () => {
+    expensesPerCategory: () => {
       const allExpenses = transactions.filter(
         (item) => item.type === "expense"
       );
@@ -288,7 +287,31 @@ export const GlobalStorage = ({ children }) => {
           return { category: item[0].category, total: expensesTotal };
         });
 
-        const msCategory = expensesPerCategoryFormatted.reduce(
+        return expensesPerCategoryFormatted;
+      }
+    },
+    mostSpendingCategory: () => {
+      const msCategory = numbers.expensesPerCategory().reduce(
+        (acc, item) => {
+          if (acc.total > item.total) {
+            return acc;
+          } else {
+            return item;
+          }
+        },
+        { total: 0 }
+      );
+
+      const ndMostSpendingCategory = numbers
+        .expensesPerCategory()
+        .reduce((acc, item) => {
+          if (item.category !== msCategory.category) {
+            return [...acc, item];
+          } else {
+            return acc;
+          }
+        }, [])
+        .reduce(
           (acc, item) => {
             if (acc.total > item.total) {
               return acc;
@@ -299,43 +322,22 @@ export const GlobalStorage = ({ children }) => {
           { total: 0 }
         );
 
-        const ndMostSpendingCategory = expensesPerCategoryFormatted
-          .reduce((acc, item) => {
-            if (item.category !== msCategory.category) {
-              return [...acc, item];
-            } else {
-              return acc;
-            }
-          }, [])
-          .reduce(
-            (acc, item) => {
-              if (acc.total > item.total) {
-                return acc;
-              } else {
-                return item;
-              }
-            },
-            { total: 0 }
-          );
-
-        const returnObject = {
-          category: msCategory.category,
-          total: format(msCategory.total),
-          expenses: transactions.filter(
-            (item) => item.category === msCategory.category
-          ).length,
-          logo: categories[0].find((item) => item.value === msCategory.category)
-            .logo,
-          color: categories[0].find(
-            (item) => item.value === msCategory.category
-          ).color,
-          difference: (
-            (100 / ndMostSpendingCategory.total) * msCategory.total -
-            100
-          ).toFixed(0),
-        };
-        return returnObject;
-      }
+      const returnObject = {
+        category: msCategory.category,
+        total: format(msCategory.total),
+        expenses: transactions.filter(
+          (item) => item.category === msCategory.category
+        ).length,
+        logo: categories[0].find((item) => item.value === msCategory.category)
+          .logo,
+        color: categories[0].find((item) => item.value === msCategory.category)
+          .color,
+        difference: (
+          (100 / ndMostSpendingCategory.total) * msCategory.total -
+          100
+        ).toFixed(0),
+      };
+      return returnObject;
     },
   };
 
