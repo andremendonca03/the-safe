@@ -12,7 +12,7 @@ const SideInfo = () => {
     if (isThereExpense.length > 1) {
       return [ ...acc, (isThereExpense[0].category !== item.category)]
     } else {
-      return false;
+      return [false];
     }
   }, []).includes(true);
 
