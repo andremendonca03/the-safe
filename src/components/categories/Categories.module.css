@@ -1,0 +1,72 @@
+.categories {
+  width: 100%;
+  max-width: 500px;
+  margin: 0px auto; 
+}
+
+.pieChartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0px auto 30px auto;
+}
+
+.pieChartCenter {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-w0);
+  border-radius: 50%;
+}
+
+.categoriesItem {
+  display: grid;
+  grid-template-columns: minmax(1px, 40px) 1fr;
+  font-size: 1.4rem;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.categoriesItem:not(:last-of-type) {
+  border-bottom: 1px solid var(--color-b1);
+}
+
+.categoriesItem > p {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  text-transform: capitalize;
+}
+
+.categoriesImg {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.categoriesImg img {
+  width: 16px;
+  height: 16px;
+}
+
+.categoriesValue {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  font-weight: 700;
+}
+
+.categoriesPercentage {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  font-size: 1.2rem;
+}
