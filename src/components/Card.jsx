@@ -10,6 +10,9 @@ import Graphic from "./accounts/Graphic";
 import AddBtns from "./accounts/AddBtns";
 import SideInfo from "./accounts/SideInfo";
 
+import Categories from "./categories/Categories";
+import TotalExpenses from "./categories/TotalExpenses";
+
 import { GlobalContext } from "../GlobalContext";
 
 const Card = () => {
@@ -53,7 +56,13 @@ const Card = () => {
 
       {isCategories ? (
         <article>
-
+          <section className={styles.topComponents}>
+            <Balance />
+            <TotalExpenses />
+          </section>
+          <section className={styles.bottomComponents}>
+            <Categories />
+          </section>
         </article>
       ) : (
         <></>
