@@ -1,7 +1,7 @@
 .categories {
   width: 100%;
   max-width: 500px;
-  margin: 0px auto; 
+  margin: 0px auto;
 }
 
 .pieChartContainer {
@@ -10,6 +10,7 @@
   align-items: center;
   width: 200px;
   height: 200px;
+  background: var(--color-b1);
   border-radius: 50%;
   margin: 0px auto 30px auto;
 }
@@ -69,4 +70,11 @@
   grid-row: 2;
   justify-self: end;
   font-size: 1.2rem;
+}
+
+.categories > p:last-of-type {
+  max-width: fit-content;
+  font-size: 1.6rem;
+  color: var(--color-b1);
+  margin: 0px auto;
 }

@@ -8,13 +8,15 @@ const SideInfo = () => {
   const isThereExpense = global.transactions.filter(
     (item) => item.type === "expense"
   );
-  const isThereMultipleExpenses = isThereExpense.reduce((acc, item) => {
-    if (isThereExpense.length > 1) {
-      return [ ...acc, (isThereExpense[0].category !== item.category)]
-    } else {
-      return [false];
-    }
-  }, []).includes(true);
+  const isThereMultipleExpenses = isThereExpense
+    .reduce((acc, item) => {
+      if (isThereExpense.length > 1) {
+        return [...acc, isThereExpense[0].category !== item.category];
+      } else {
+        return [false];
+      }
+    }, [])
+    .includes(true);
 
   /* CSS BTN HOVER EFFECT */
   function handleMouseEnter({ target }) {
@@ -79,6 +81,14 @@ const SideInfo = () => {
         </div>
       ) : (
         <></>
+      )}
+      {global.transactions[0] ? (
+        <></>
+      ) : (
+        <p>
+          <img src={arrow} alt="" />
+          Make your first transaction
+        </p>
       )}
     </section>
   );

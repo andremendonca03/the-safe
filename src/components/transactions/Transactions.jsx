@@ -14,7 +14,7 @@ const Transactions = () => {
 
   return (
     <section className={styles.transactions}>
-      {global.transactionsShow.map((item) => {
+      {global.transactions[0] ? global.transactionsShow.map((item) => {
         return (
           <div className={styles.transactionsItem} key={item.id}>
             <div
@@ -44,7 +44,7 @@ const Transactions = () => {
             </div>
           </div>
         );
-      })}
+      }) : <p>No transactions yet...</p>}
     </section>
   );
 };

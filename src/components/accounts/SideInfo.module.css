@@ -66,9 +66,19 @@
   border: 2px solid var(--color-e0);
   border-radius: 5px;
   margin: 0px auto;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
 
 .categoriesBtn:hover {
   color: var(--color-w0);
+}
+
+.sideinfo > p:last-of-type {
+  color: var(--color-b1);
+}
+.sideinfo > p:last-of-type img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(3) saturate(0);
+  margin: 0px auto;
 }

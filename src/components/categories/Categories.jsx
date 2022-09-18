@@ -5,16 +5,17 @@ import { GlobalContext } from "../../GlobalContext";
 const Categories = () => {
   const global = React.useContext(GlobalContext);
 
-  const ordinateExpenses = global.numbers
-    .expensesPerCategory()
-    .sort((a, b) => b.total - a.total);
+  const ordinateExpenses =
+    global.numbers.expensesPerCategory() &&
+    global.numbers.expensesPerCategory().sort((a, b) => b.total - a.total);
 
   return (
     <section className={styles.categories}>
       <div
         className={styles.pieChartContainer}
-        style={{
-          background: `
+        style={
+          ordinateExpenses && {
+            background: `
     repeating-conic-gradient(
       from 0deg,
       ${ordinateExpenses.reduce((acc, item, index, array) => {
@@ -88,7 +89,8 @@ const Categories = () => {
       }, 0)}
     )
   `,
-        }}
+          }
+        }
       >
         <div className={styles.pieChartCenter}></div>
       </div>
@@ -131,6 +133,11 @@ const Categories = () => {
             );
           })}
       </div>
+      {global.transactions.filter((item) => item.type === "expense")[0] ? (
+        <></>
+      ) : (
+        <p>No expenses yet...</p>
+      )}
     </section>
   );
 };
