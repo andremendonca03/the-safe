@@ -1,0 +1,8 @@
+.totalExpenses {
+  font-size: 1.6rem;
+}
+
+.totalExpenses span {
+  font-weight: 700;
+  color: var(--color-d0);
+}
