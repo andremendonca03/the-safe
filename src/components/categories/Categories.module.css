@@ -78,3 +78,14 @@
   color: var(--color-b1);
   margin: 0px auto;
 }
+
+@media only screen and (max-width: 400px) {
+  .pieChartContainer {
+    width: 150px;
+    height: 150px;
+  }
+  .pieChartCenter {
+    width: 60px;
+    height: 60px;
+  }
+}

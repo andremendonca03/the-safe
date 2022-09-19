@@ -24,3 +24,21 @@
   color: var(--color-b0);
   translate: 0px 5px;
 }
+
+@media only screen and (max-width: 440px) {
+  .navBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px 25px 50px;
+  }
+
+  .navBar button:not(:last-of-type) {
+    margin-right: 0px;
+  }
+
+  .navBar button[data-active="true"] {
+    translate: 0px 0px;
+  }
+}

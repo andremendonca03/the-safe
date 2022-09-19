@@ -31,3 +31,18 @@
 .earningsBtn:hover {
   color: var(--color-w0);
 }
+
+@media only screen and (max-width: 600px) {
+  .expensesBtn {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .expensesBtn {
+    margin-right: 0px;
+  }
+  .earningsBtn {
+    display: none;
+  }
+}

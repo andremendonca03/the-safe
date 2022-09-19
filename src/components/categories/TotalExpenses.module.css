@@ -1,8 +1,15 @@
 .totalExpenses {
   font-size: 1.6rem;
+  text-align: end;
 }
 
 .totalExpenses span {
   font-weight: 700;
   color: var(--color-d0);
+}
+
+@media only screen and (max-width: 400px) {
+  .totalExpenses span {
+    display: block;
+  }
 }

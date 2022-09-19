@@ -28,7 +28,7 @@ const Graphic = () => {
   }
 
   return (
-    <section>
+    <section className={styles.graphic}>
       <span className={styles.title} style={{ textTransform: "capitalize" }}>
         {global.method}
       </span>

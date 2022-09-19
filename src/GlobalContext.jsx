@@ -37,7 +37,7 @@ export const GlobalStorage = ({ children }) => {
     logo: "",
     color: "",
     method: "",
-    value: 0,
+    value: "",
   });
   const [transactions, setTransactions] = React.useState([]);
   const transactionsShow = transactions.reduce((acc, item) => {

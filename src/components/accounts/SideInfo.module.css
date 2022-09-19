@@ -1,15 +1,15 @@
-.sideinfo {
+.sideInfo {
   font-size: 1.4rem;
   font-weight: 500;
   padding: 15px 0px 15px 15px;
   border-left: 1px solid var(--color-w-1);
 }
 
-.sideinfo > div > p {
+.sideInfo > div > p {
   margin-bottom: 15px;
 }
 
-.sideinfo p span {
+.sideInfo p span {
   color: var(--color-d0);
 }
 
@@ -73,12 +73,28 @@
   color: var(--color-w0);
 }
 
-.sideinfo > p:last-of-type {
+.sideInfo > p:last-of-type {
   color: var(--color-b1);
 }
-.sideinfo > p:last-of-type img {
+.sideInfo > p:last-of-type img {
   width: 20px;
   height: 20px;
   filter: brightness(3) saturate(0);
   margin: 0px auto;
+}
+
+@media only screen and (max-width: 700px) {
+  .sideInfo {
+    flex: 0 1 300px;
+    padding: 15px;
+    border-left: 0px;
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .sideInfo {
+    flex: 0 1 1px;
+    width: 100%;
+  }
 }

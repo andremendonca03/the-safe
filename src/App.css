@@ -64,21 +64,27 @@ img {
 }
 
 :root {
-   --color-m0: #29D40E;
-   --color-m1: #66E54D;
-   --color-e0: #2473D4;
-   --color-e1: #65A0D7;
-   --color-s0: #26541F;
-   --color-d0: #D43E0E;
-   --color-d1: #E17B56;
-   --color-b0: #051A00;
-   --color-b1: #B0BEAC;
-   --color-w0: #EDF0EC;
-   --color-w-1: #D2D3D2;
+  --color-m0: #29d40e;
+  --color-m1: #66e54d;
+  --color-e0: #2473d4;
+  --color-e1: #65a0d7;
+  --color-s0: #26541f;
+  --color-d0: #d43e0e;
+  --color-d1: #e17b56;
+  --color-b0: #051a00;
+  --color-b1: #b0beac;
+  --color-w0: #edf0ec;
+  --color-w-1: #d2d3d2;
 }
 
 body {
-   font-family: 'Inter', sans-serif;
-   font-weight: 500;
-   color: var(--color-b0);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: var(--color-b0);
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 54%;
+  }
 }

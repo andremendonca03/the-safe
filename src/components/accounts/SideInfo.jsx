@@ -32,7 +32,7 @@ const SideInfo = () => {
   }
 
   return (
-    <section className={styles.sideinfo}>
+    <section className={styles.sideInfo}>
       {isThereExpense.length ? (
         <div>
           <p>Most spending category:</p>

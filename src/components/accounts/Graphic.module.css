@@ -63,3 +63,9 @@
   text-align: center;
   color: var(--color-b1);
 }
+
+@media only screen and (max-width: 400px) {
+  .graphic {
+    margin-top: 30px;
+  }
+}

@@ -15,6 +15,29 @@
 
 .bottomComponents {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+@media only screen and (max-width: 700px) {
+  .bottomComponents {
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .bottomComponents {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+  }
 }

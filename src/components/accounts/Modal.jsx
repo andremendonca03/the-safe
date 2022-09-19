@@ -22,8 +22,6 @@ const Modal = () => {
         return { ...prev, value: Number(target.value) };
       });
     } else if (target.id === "category") {
-      
-
       global.setNewTransaction((prev) => {
         const earningOrExpense = global.modal.type === "earning" ? 1 : 0;
         return {
@@ -74,7 +72,7 @@ const Modal = () => {
       name: "",
       category: "",
       method: "",
-      value: 0,
+      value: "",
     });
   }
 
