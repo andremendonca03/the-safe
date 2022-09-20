@@ -196,73 +196,57 @@ export const GlobalStorage = ({ children }) => {
   const numbers = {
     earnings: (method) => {
       if (method === "all") {
-        return format(
-          transactions.reduce((acc, item) => {
+        return transactions.reduce((acc, item) => {
+          if (item.type === "earning") {
+            return acc + item.value;
+          } else {
+            return acc;
+          }
+        }, 0);
+      } else {
+        return transactions
+          .filter((item) => item.method === method)
+          .reduce((acc, item) => {
             if (item.type === "earning") {
               return acc + item.value;
             } else {
               return acc;
             }
-          }, 0)
-        );
-      } else {
-        return format(
-          transactions
-            .filter((item) => item.method === method)
-            .reduce((acc, item) => {
-              if (item.type === "earning") {
-                return acc + item.value;
-              } else {
-                return acc;
-              }
-            }, 0)
-        );
+          }, 0);
       }
     },
     expenses: (method) => {
       if (method === "all") {
-        return format(
-          transactions.reduce((acc, item) => {
+        return transactions.reduce((acc, item) => {
+          if (item.type === "expense") {
+            return acc + item.value;
+          } else {
+            return acc;
+          }
+        }, 0);
+      } else {
+        return transactions
+          .filter((item) => item.method === method)
+          .reduce((acc, item) => {
             if (item.type === "expense") {
               return acc + item.value;
             } else {
               return acc;
             }
-          }, 0)
-        );
-      } else {
-        return format(
-          transactions
-            .filter((item) => item.method === method)
-            .reduce((acc, item) => {
-              if (item.type === "expense") {
-                return acc + item.value;
-              } else {
-                return acc;
-              }
-            }, 0)
-        );
+          }, 0);
       }
     },
     total: (method) => {
       if (method === "all") {
-        const unformattedEarnings = Number(
-          numbers.earnings("all").replace(",", "")
-        );
-        const unformattedExpenses = Number(
-          numbers.expenses("all").replace(",", "")
-        );
+        const unformattedEarnings = numbers.earnings("all");
+        const unformattedExpenses = numbers.expenses("all");
 
-        return format(unformattedEarnings - unformattedExpenses);
+        return unformattedEarnings - unformattedExpenses;
       } else {
-        const unformattedEarnings = Number(
-          numbers.earnings(method).replace(",", "")
-        );
-        const unformattedExpenses = Number(
-          numbers.expenses(method).replace(",", "")
-        );
+        const unformattedEarnings = numbers.earnings(method);
+        const unformattedExpenses = numbers.expenses(method);
 
-        return format(unformattedEarnings - unformattedExpenses);
+        return unformattedEarnings - unformattedExpenses;
       }
     },
     expensesPerCategory: () => {

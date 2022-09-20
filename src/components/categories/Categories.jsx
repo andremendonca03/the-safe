@@ -9,6 +9,8 @@ const Categories = () => {
     global.numbers.expensesPerCategory() &&
     global.numbers.expensesPerCategory().sort((a, b) => b.total - a.total);
 
+  console.log(ordinateExpenses);  
+
   return (
     <section className={styles.categories}>
       <div

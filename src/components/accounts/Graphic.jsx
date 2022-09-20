@@ -6,8 +6,8 @@ const Graphic = () => {
   const global = React.useContext(GlobalContext);
 
   function barsStyle(type) {
-    const earningsValue = Number(global.numbers.earnings(global.method).replace(",", ""));
-    const expensesValue = Number(global.numbers.expenses(global.method).replace(",", ""));
+    const earningsValue = global.numbers.earnings(global.method);
+    const expensesValue = global.numbers.expenses(global.method);
     const isEarningsBigger = earningsValue > expensesValue;
 
     if (earningsValue + expensesValue === 0) {
@@ -44,7 +44,7 @@ const Graphic = () => {
             ${" "}
             {global.balanceHidden
               ? "— — —"
-              : global.numbers.earnings(global.method)}
+              : global.format(global.numbers.earnings(global.method))}
           </span>
           <p>Earnings</p>
         </div>
@@ -53,7 +53,7 @@ const Graphic = () => {
             ${" "}
             {global.balanceHidden
               ? "— — —"
-              : global.numbers.expenses(global.method)}
+              : global.format(global.numbers.expenses(global.method))}
           </span>
           <p>Expenses</p>
         </div>
@@ -62,7 +62,7 @@ const Graphic = () => {
             ${" "}
             {global.balanceHidden
               ? "— — —"
-              : global.numbers.total(global.method)}
+              : global.format(global.numbers.total(global.method))}
           </span>
           <p>Total</p>
         </div>

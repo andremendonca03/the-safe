@@ -18,7 +18,7 @@ const Balance = () => {
         <span
           style={{ color: global.numbers.total("all") < 0 ? "var(--color-d0)" : "var(--color-m0)" }}
         >
-          $ {global.balanceHidden ? "— — —" : global.numbers.total("all")}
+          $ {global.balanceHidden ? "— — —" : global.format(global.numbers.total("all"))}
         </span>
         <img
           src={global.balanceHidden ? eyeIcon : eyeOffIcon}

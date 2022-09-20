@@ -9,7 +9,7 @@ const TotalExpenses = () => {
     <div className={styles.totalExpenses}>
       Total Expenses:{" "}
       <span>
-        $ {global.balanceHidden ? "— — —" : global.numbers.expenses("all")}
+        $ {global.balanceHidden ? "— — —" : global.format(global.numbers.expenses("all"))}
       </span>
     </div>
   );
