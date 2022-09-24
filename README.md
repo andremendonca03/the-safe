@@ -17,8 +17,6 @@ To build this application, I generaly used **React JS**. Reactive States were th
 
 When it comes to stylization, I used **CSS Modules** for each JSX Component in order to increase the acessibility and help on the maintenance of the site.
 
----
-
 ## Other Functionalities
 
 Beyond showing the user's earnings and expenses and an Overall Balance, I decided to go a step forward and create two other pages that increase the number of information and details the user can have access to.
