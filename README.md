@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# The Safe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./README-imgs/main.jpg" alt="The Safe front page" width="400"/>
 
-## Available Scripts
+This project was created by Andre Mendonca © - All rights reserved.
 
-In the project directory, you can run:
+## What The Safe is?
+The Safe is a project created for people who wants to track and be in a better control of their financial life. The project works as a browser application that could easily be adapted for smartphones and tablets.
 
-### `npm start`
+Using The Safe, the user has the possibility to **add expenses** they had or **earnings** they have got and link these transactions to a payment/receiving method that could be their bank card, cash amount or paypal account and agroup each transaction in a variety of specific categories. Moreover, due to a clear, straightforward and organic layout and design, the user can create a transaction in just a few seconds, with no space for questions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="./README-imgs/transactions.jpg" alt="Transactions page" width="400"/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+To build this application, I generaly used **React JS**. Reactive States were the foundation of the app, regarding that all the data that is shown on the pages is reactive and affected by Effect Hooks. In addition, a **Global Context** was used to get variables and data across multiple files and components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When it comes to stylization, I used **CSS Modules** for each JSX Component in order to increase the acessibility and help on the maintenance of the site.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Other Functionalities
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Beyond showing the user's earnings and expenses and an Overall Balance, I decided to go a step forward and create two other pages that increase the number of information and details the user can have access to.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The **Transactions Page** allows the user to check all the transactions they have made and also to delete the ones they found unecessary or incorrect. A method filter can be applied to show a more specific report.
 
-### `npm run eject`
+The **Categories Page** has a clear focus on the separation of expenses per category, enabling the user to analyze the categories they have spent the most and their percentages. It also has a total reactive pie graphic.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<img src="./README-imgs/categories.jpg" alt="Categories page" width="400"/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Database Alternative
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+In a real application, this project would be built with a database integrated in order to save the user's data in a safe and global storage. However, I decided to use the browser's Local Storage to keep all the information necessary to run the app, which allows the user to continue their progress by just opening the site on the same browser as before.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+All the data is saved at the key ```database``` on the ```window.localStorage``` that has as value a JSON format file in a string.
