@@ -28,7 +28,7 @@ The **Categories Page** has a clear focus on the separation of expenses per cate
 <img src="./README-imgs/categories.jpg" alt="Categories page" width="400"/>
 
 
-## Database Alternative
+## Alternative Database
 
 In a real application, this project would be built with a database integrated in order to save the user's data in a safe and global storage. However, I decided to use the browser's Local Storage to keep all the information necessary to run the app, which allows the user to continue their progress by just opening the site on the same browser as before.
 
